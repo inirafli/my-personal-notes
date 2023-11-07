@@ -1,9 +1,9 @@
 import React from 'react'
 
+import HomeScreen from './HomeScreen'
+
 const NotesApp = () => (
-  <div className="app-container">
-    <h1>Hello, React</h1>
-  </div>
+  <HomeScreen />
 )
 
 export default NotesApp

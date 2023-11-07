@@ -33,6 +33,7 @@ module.exports = {
     'react/no-access-state-in-setstate': 0,
     'react/function-component-definition': 0,
     'react/button-has-type': 0,
+    'jsx-a11y/control-has-associated-label': 0,
     'jsx-quotes': 0,
   },
 };
