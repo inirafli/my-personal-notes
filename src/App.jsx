@@ -1,11 +1,8 @@
-import React from 'react';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './styles/style.css'
 
-function App() {
-  return (
-    <div className="app-container">
-      <h1>Hello, React</h1>
-    </div>
-  );
-}
+import NotesApp from './components/NotesApp'
 
-export default App;
+const root = createRoot(document.querySelector('#root'))
+root.render(<NotesApp />)
