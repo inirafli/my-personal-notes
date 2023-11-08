@@ -2,9 +2,10 @@ import React from 'react'
 
 import HomeScreen from './homepage/HomeScreen'
 import DetailScreen from './detailpage/DetailScreen'
+import AddNoteScreen from './addnotepage/AddNoteScreen'
 
 const NotesApp = () => (
-  <DetailScreen />
+  <AddNoteScreen />
 )
 
 export default NotesApp
