@@ -1,5 +1,5 @@
 import React from 'react'
-import { getActiveNotes } from '../utils/local-data'
+import { getActiveNotes } from '../../utils/local-data'
 
 import NoteItem from './NoteItem'
 

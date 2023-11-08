@@ -1,5 +1,5 @@
 import React from 'react'
-import showFormattedDate from '../utils/index'
+import showFormattedDate from '../../utils/index'
 
 const NoteItem = ({ note }) => (
   <article key={note.id} className="note-item">
