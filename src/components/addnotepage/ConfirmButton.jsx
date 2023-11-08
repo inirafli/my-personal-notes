@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ConfirmButton = () => (
+const ConfirmButton = ({ handleSaveNote }) => (
   <div className="add-new-page__action">
-    <button className="action" type="button" title="Simpan">
+    <button className="action" type="button" title="Simpan" onClick={handleSaveNote}>
       <svg
         stroke="currentColor"
         fill="currentColor"

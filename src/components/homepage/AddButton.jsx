@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AddButton = () => (
+const AddButton = ({ handleAdd }) => (
   <div className="homepage__action">
-    <button className="action" type="button">
+    <button className="action" type="button" onClick={handleAdd}>
       <svg
         stroke="currentColor"
         fill="currentColor"
