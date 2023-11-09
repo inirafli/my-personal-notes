@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addNote } from '../../utils/local-data'
+import { addNote } from '../utils/local-data'
 
-import AppBar from '../AppBar'
-import AddNoteContent from './AddNoteContent'
-import ConfirmButton from './ConfirmButton'
+import AppBar from '../components/AppBar'
+import AddNoteContent from '../components/AddNoteContent'
+import ConfirmButton from '../components/ConfirmButton'
 
 const AddNoteScreen = () => {
   const [title, setTitle] = useState('')

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import AppBar from '../AppBar'
-import HomeContent from './HomeContent'
+import AppBar from '../components/AppBar'
+import HomeContent from '../components/HomeContent'
 
 const HomeScreen = () => (
   <div className="app-container">

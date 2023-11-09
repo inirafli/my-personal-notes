@@ -1,8 +1,8 @@
 import React from 'react'
-import { getArchivedNotes } from '../../utils/local-data'
+import { getArchivedNotes } from '../utils/local-data'
 
-import SearchBar from '../SearchBar'
-import NoteList from '../NoteList'
+import SearchBar from './SearchBar'
+import NoteList from './NoteList'
 
 const ArchivedContent = () => (
   <main>

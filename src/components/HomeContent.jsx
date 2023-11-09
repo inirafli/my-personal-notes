@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getActiveNotes } from '../../utils/local-data'
+import { getActiveNotes } from '../utils/local-data'
 
-import SearchBar from '../SearchBar'
-import NoteList from '../NoteList'
+import SearchBar from './SearchBar'
+import NoteList from './NoteList'
 import AddButton from './AddButton'
 
 const HomeContent = () => {

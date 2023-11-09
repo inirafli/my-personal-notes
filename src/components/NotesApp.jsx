@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import HomeScreen from './homepage/HomeScreen'
-import DetailScreen from './detailpage/DetailScreen'
-import AddNoteScreen from './addnotepage/AddNoteScreen'
-import ArchivedScreen from './archivedpage/ArchivedScreen'
+import HomeScreen from '../pages/HomeScreen'
+import DetailScreen from '../pages/DetailScreen'
+import AddNoteScreen from '../pages/AddNoteScreen'
+import ArchivedScreen from '../pages/ArchivedScreen'
 
 const NotesApp = () => (
   <BrowserRouter>
