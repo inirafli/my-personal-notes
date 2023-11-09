@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import NoteItem from './NoteItem'
 
@@ -18,6 +19,11 @@ const NoteList = ({ getNotes, searchTerm }) => {
       )}
     </section>
   )
+}
+
+NoteList.propTypes = {
+  getNotes: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string.isRequired,
 }
 
 export default NoteList

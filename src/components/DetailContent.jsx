@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import showFormattedDate from '../utils/index'
 
 const DetailContent = ({ note }) => {
@@ -13,6 +14,14 @@ const DetailContent = ({ note }) => {
       <div className="detail-page__body">{note.body}</div>
     </>
   )
+}
+
+DetailContent.propTypes = {
+  note: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }),
 }
 
 export default DetailContent

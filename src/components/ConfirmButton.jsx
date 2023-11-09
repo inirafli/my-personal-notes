@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ConfirmButton = ({ handleSaveNote }) => (
   <div className="add-new-page__action">
@@ -18,5 +19,9 @@ const ConfirmButton = ({ handleSaveNote }) => (
     </button>
   </div>
 )
+
+ConfirmButton.propTypes = {
+  handleSaveNote: PropTypes.func.isRequired,
+}
 
 export default ConfirmButton

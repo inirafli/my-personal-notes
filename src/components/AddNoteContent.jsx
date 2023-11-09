@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const AddNoteContent = ({
   title, setTitle, body, setBody,
@@ -19,5 +20,12 @@ const AddNoteContent = ({
     />
   </div>
 )
+
+AddNoteContent.propTypes = {
+  title: PropTypes.string.isRequired,
+  setTitle: PropTypes.func.isRequired,
+  body: PropTypes.string.isRequired,
+  setBody: PropTypes.func.isRequired,
+}
 
 export default AddNoteContent

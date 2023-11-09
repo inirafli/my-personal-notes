@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const AddButton = ({ handleAdd }) => (
   <div className="homepage__action">
@@ -18,5 +19,9 @@ const AddButton = ({ handleAdd }) => (
     </button>
   </div>
 )
+
+AddButton.propTypes = {
+  handleAdd: PropTypes.func.isRequired,
+}
 
 export default AddButton

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ActionButton = ({
   handleDelete, handleArchive, handleUnarchive, archived,
@@ -18,5 +19,12 @@ const ActionButton = ({
     </button>
   </div>
 )
+
+ActionButton.propTypes = {
+  handleDelete: PropTypes.func.isRequired,
+  handleArchive: PropTypes.func.isRequired,
+  handleUnarchive: PropTypes.func.isRequired,
+  archived: PropTypes.bool,
+}
 
 export default ActionButton

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
   const handleSearchChange = (e) => {
@@ -16,6 +17,11 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
       />
     </section>
   )
+}
+
+SearchBar.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
 }
 
 export default SearchBar
