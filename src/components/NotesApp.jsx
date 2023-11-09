@@ -5,6 +5,7 @@ import HomeScreen from '../pages/HomeScreen'
 import DetailScreen from '../pages/DetailScreen'
 import AddNoteScreen from '../pages/AddNoteScreen'
 import ArchivedScreen from '../pages/ArchivedScreen'
+import NotFoundScreen from '../pages/NotFoundScreen'
 
 const NotesApp = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const NotesApp = () => (
       <Route path='/notes/:id' element={<DetailScreen />} />
       <Route path='/notes/new' element={<AddNoteScreen />} />
       <Route path='/archives' element={<ArchivedScreen />} />
+      <Route path='*' element={<NotFoundScreen />} />
     </Routes>
   </BrowserRouter>
 )

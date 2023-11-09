@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
   getNote, deleteNote, archiveNote, unarchiveNote,
@@ -14,10 +14,16 @@ const DetailScreen = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (!note) {
+      navigate('/not-found')
+    }
+  }, [note, navigate])
+
   const handleDelete = () => {
     deleteNote(id)
 
-    if (note.archived) {
+    if (note && note.archived) {
       navigate('/archives')
     } else {
       navigate('/')
@@ -44,7 +50,7 @@ const DetailScreen = () => {
             handleDelete={handleDelete}
             handleArchive={handleArchive}
             handleUnarchive={handleUnarchive}
-            archived={note.archived}
+            archived={note && note.archived}
           />
         </section>
       </main>
