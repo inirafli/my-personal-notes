@@ -2,13 +2,15 @@ import React from 'react'
 
 import NoteItem from './NoteItem'
 
-const NoteList = ({ getNotes }) => {
+const NoteList = ({ getNotes, searchTerm }) => {
   const notes = getNotes()
 
+  const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchTerm.toLowerCase()))
+
   return (
-    <section className={notes.length > 0 ? 'notes-list' : 'notes-list-empty'}>
-      {notes.length > 0 ? (
-        notes.map((note) => (
+    <section className={filteredNotes.length > 0 ? 'notes-list' : 'notes-list-empty'}>
+      {filteredNotes.length > 0 ? (
+        filteredNotes.map((note) => (
           <NoteItem key={note.id} note={note} />
         ))
       ) : (
