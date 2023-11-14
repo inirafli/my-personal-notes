@@ -9,6 +9,7 @@ import AddNoteScreen from '../pages/AddNoteScreen'
 import ArchivedScreen from '../pages/ArchivedScreen'
 import NotFoundScreen from '../pages/NotFoundScreen'
 import RegisterScreen from '../pages/RegisterScreen'
+import LoginScreen from '../pages/LoginScreen'
 
 const Layout = () => (
   <div>
