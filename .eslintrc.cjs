@@ -35,6 +35,7 @@ module.exports = {
     'react/require-default-props': 0,
     'react/button-has-type': 0,
     'jsx-a11y/control-has-associated-label': 0,
+    'jsx-a11y/label-has-associated-control': 0,
     'jsx-quotes': 0,
   },
 };
