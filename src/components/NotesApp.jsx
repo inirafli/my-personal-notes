@@ -25,6 +25,8 @@ const NotesApp = () => (
         <Route path="notes/:id" element={<DetailScreen />} />
         <Route path="notes/new" element={<AddNoteScreen />} />
         <Route path="archives" element={<ArchivedScreen />} />
+        <Route path="login" element={<LoginScreen />} />
+        <Route path="register" element={<RegisterScreen />} />
         <Route path="*" element={<NotFoundScreen />} />
       </Route>
     </Routes>

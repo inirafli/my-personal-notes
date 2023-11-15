@@ -13,7 +13,7 @@ const RegisterScreen = () => (
         <p>
           Sudah punya akun?
           {' '}
-          <a href="/">Login di sini</a>
+          <a href="/login">Login di sini</a>
         </p>
       </section>
     </main>
