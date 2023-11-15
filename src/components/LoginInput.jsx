@@ -11,7 +11,7 @@ const LoginInput = () => {
     const { error, data } = await login({ email, password })
     if (!error) {
       putAccessToken(data.accessToken)
-      navigate('/')
+      navigate('/', { replace: true })
     }
   }
 

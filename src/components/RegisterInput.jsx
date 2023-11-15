@@ -17,7 +17,7 @@ const RegisterInput = () => {
 
     const { error } = await register({ name, email, password })
     if (!error) {
-      navigate('/login')
+      navigate('/login', { replace: true })
     }
   }
 
