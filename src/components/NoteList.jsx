@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import NoteItem from './NoteItem'
 
 const NoteList = ({ getNotes, searchTerm }) => {
-  const notes = getNotes()
+  const [notes, setNotes] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getNotes()
+        if (!response.error) {
+          setNotes(response.data)
+        }
+      } catch (error) {
+        alert('Error fetching Notes: ', error)
+      }
+    }
+
+    fetchData()
+  }, [getNotes])
 
   const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
