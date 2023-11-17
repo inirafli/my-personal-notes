@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AppBar from '../components/AppBar'
 import RegisterInput from '../components/RegisterInput'
 import { useAuth } from '../contexts/AuthContext'
@@ -25,7 +25,7 @@ const RegisterScreen = () => {
           <p>
             Sudah punya akun?
             {' '}
-            <a href="/login">Login di sini</a>
+            <Link to="/login">Login di sini</Link>
           </p>
         </section>
       </main>

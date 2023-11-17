@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AppBar from '../components/AppBar'
 import LoginInput from '../components/LoginInput'
 import { useAuth } from '../contexts/AuthContext'
@@ -24,7 +24,7 @@ const LoginScreen = () => {
           <p>
             Belum punya akun?
             {' '}
-            <a href="/register">Daftar di sini</a>
+            <Link to="/register">Daftar di sini</Link>
           </p>
         </section>
       </main>
