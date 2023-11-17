@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login, putAccessToken } from '../utils/network-data'
+import { useAuth } from '../contexts/AuthContext'
 
 const LoginInput = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const { login: authLogin } = useAuth()
 
   const handleLogin = async () => {
     const { error, data } = await login({ email, password })
     if (!error) {
       putAccessToken(data.accessToken)
+      authLogin()
       navigate('/', { replace: true })
     }
   }

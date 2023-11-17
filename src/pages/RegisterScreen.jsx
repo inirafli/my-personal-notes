@@ -3,21 +3,17 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppBar from '../components/AppBar'
 import RegisterInput from '../components/RegisterInput'
-import { getUserLogged } from '../utils/network-data'
+import { useAuth } from '../contexts/AuthContext'
 
 const RegisterScreen = () => {
   const navigate = useNavigate()
+  const { isAuthenticated } = useAuth()
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { error } = await getUserLogged()
-      if (!error) {
-        navigate('/')
-      }
+    if (isAuthenticated) {
+      navigate('/')
     }
-
-    checkAuth()
-  }, [navigate])
+  }, [isAuthenticated, navigate])
 
   return (
     <div className="app-container">
