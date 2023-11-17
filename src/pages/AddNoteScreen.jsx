@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addNote } from '../utils/local-data'
+import { addNote } from '../utils/network-data'
 
 import AppBar from '../components/AppBar'
 import AddNoteContent from '../components/AddNoteContent'
@@ -11,13 +11,18 @@ const AddNoteScreen = () => {
   const [body, setBody] = useState('')
   const navigate = useNavigate()
 
-  const handleSaveNote = () => {
+  const handleSaveNote = async () => {
     if (title || body) {
-      addNote({
+      const response = await addNote({
         title: title || '(untitled)',
         body,
       })
-      navigate('/')
+
+      if (!response.error) {
+        navigate('/')
+      } else {
+        alert('Error adding Note: ', response.error)
+      }
     }
   }
 
