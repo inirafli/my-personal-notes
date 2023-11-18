@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-
 import { Link, useNavigate } from 'react-router-dom'
-import AppBar from '../components/AppBar'
+
 import RegisterInput from '../components/RegisterInput'
 import { useAuth } from '../contexts/AuthContext'
+import BaseLayout from '../components/BaseLayout'
 
 const RegisterScreen = () => {
   const navigate = useNavigate()
@@ -16,8 +16,7 @@ const RegisterScreen = () => {
   }, [isAuthenticated, navigate])
 
   return (
-    <div className="app-container">
-      <AppBar />
+    <BaseLayout>
       <main>
         <section className='register-page'>
           <h2>Isi form untuk mendaftar akun.</h2>
@@ -29,7 +28,7 @@ const RegisterScreen = () => {
           </p>
         </section>
       </main>
-    </div>
+    </BaseLayout>
   )
 }
 

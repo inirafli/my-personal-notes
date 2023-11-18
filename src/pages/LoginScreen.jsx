@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import AppBar from '../components/AppBar'
+
 import LoginInput from '../components/LoginInput'
 import { useAuth } from '../contexts/AuthContext'
+import BaseLayout from '../components/BaseLayout'
 
 const LoginScreen = () => {
   const navigate = useNavigate()
@@ -15,8 +16,7 @@ const LoginScreen = () => {
   }, [isAuthenticated, navigate])
 
   return (
-    <div className="app-container">
-      <AppBar />
+    <BaseLayout>
       <main>
         <section className='login-page'>
           <h2>Yuk, login untuk menggunakan aplikasi.</h2>
@@ -28,7 +28,7 @@ const LoginScreen = () => {
           </p>
         </section>
       </main>
-    </div>
+    </BaseLayout>
   )
 }
 

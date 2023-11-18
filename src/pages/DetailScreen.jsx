@@ -4,9 +4,9 @@ import {
   getNote, archiveNote, unarchiveNote, deleteNote,
 } from '../utils/network-data'
 
-import AppBar from '../components/AppBar'
 import DetailContent from '../components/DetailContent'
 import ActionButton from '../components/ActionButton'
+import BaseLayout from '../components/BaseLayout'
 
 const DetailScreen = () => {
   const { id } = useParams()
@@ -47,8 +47,7 @@ const DetailScreen = () => {
   }
 
   return (
-    <div className="app-container">
-      <AppBar />
+    <BaseLayout>
       <main>
         <section className="detail-page">
           <DetailContent note={note} />
@@ -60,7 +59,7 @@ const DetailScreen = () => {
           />
         </section>
       </main>
-    </div>
+    </BaseLayout>
   )
 }
 

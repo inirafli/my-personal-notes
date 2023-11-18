@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addNote } from '../utils/network-data'
 
-import AppBar from '../components/AppBar'
 import AddNoteContent from '../components/AddNoteContent'
 import ConfirmButton from '../components/ConfirmButton'
+import BaseLayout from '../components/BaseLayout'
 
 const AddNoteScreen = () => {
   const [title, setTitle] = useState('')
@@ -27,15 +27,14 @@ const AddNoteScreen = () => {
   }
 
   return (
-    <div className='app-container'>
-      <AppBar />
+    <BaseLayout>
       <main>
         <section className="add-new-page">
           <AddNoteContent title={title} setTitle={setTitle} body={body} setBody={setBody} />
           <ConfirmButton handleSaveNote={handleSaveNote} />
         </section>
       </main>
-    </div>
+    </BaseLayout>
   )
 }
 

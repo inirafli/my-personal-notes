@@ -7,6 +7,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   const login = () => {
     setIsAuthenticated(true)
@@ -24,12 +25,15 @@ export const AuthProvider = ({ children }) => {
       } else {
         login()
       }
+      setLoading(false)
     }
 
     checkAuth()
   }, [logout])
 
-  const contextValue = useMemo(() => ({ isAuthenticated, login, logout }), [
+  const contextValue = useMemo(() => ({
+    isAuthenticated, login, logout,
+  }), [
     isAuthenticated,
     login,
     logout,
@@ -37,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={contextValue}>
-      {children}
+      {!isLoading && children}
     </AuthContext.Provider>
   )
 }
