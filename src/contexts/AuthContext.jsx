@@ -6,20 +6,26 @@ import { getUserLogged } from '../utils/network-data'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const [user, setUser] = useState(null)
   const [isLoading, setLoading] = useState(true)
 
-  const login = () => {
+  const login = async () => {
+    const { data } = await getUserLogged()
+
     setIsAuthenticated(true)
+    setUser(data)
   }
 
   const logout = () => {
     setIsAuthenticated(false)
+    setUser(null)
   }
 
   useEffect(() => {
     const checkAuth = async () => {
       const { error } = await getUserLogged()
+
       if (error) {
         logout()
       } else {
@@ -29,12 +35,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     checkAuth()
-  }, [logout])
+  }, [])
 
   const contextValue = useMemo(() => ({
-    isAuthenticated, login, logout,
+    isAuthenticated, login, logout, user,
   }), [
     isAuthenticated,
+    user,
     login,
     logout,
   ])
