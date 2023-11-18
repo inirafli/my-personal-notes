@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import NoteItem from './NoteItem'
+import LoadingSpinner from './LoadingSpinner'
 
 const NoteList = ({ getNotes, searchTerm }) => {
   const [notes, setNotes] = useState([])
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +17,8 @@ const NoteList = ({ getNotes, searchTerm }) => {
         }
       } catch (error) {
         alert('Error fetching Notes: ', error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -24,15 +28,21 @@ const NoteList = ({ getNotes, searchTerm }) => {
   const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
-    <section className={filteredNotes.length > 0 ? 'notes-list' : 'notes-list-empty'}>
-      {filteredNotes.length > 0 ? (
-        filteredNotes.map((note) => (
-          <NoteItem key={note.id} note={note} />
-        ))
+    <>
+      {isLoading ? (
+        <LoadingSpinner />
       ) : (
-        <p className="notes-list__empty">Tidak ada catatan</p>
+        <section className={filteredNotes.length > 0 ? 'notes-list' : 'notes-list-empty'}>
+          {filteredNotes.length > 0 ? (
+            filteredNotes.map((note) => (
+              <NoteItem key={note.id} note={note} />
+            ))
+          ) : (
+            <p className="notes-list__empty">Tidak ada catatan</p>
+          )}
+        </section>
       )}
-    </section>
+    </>
   )
 }
 

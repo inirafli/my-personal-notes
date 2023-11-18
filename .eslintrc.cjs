@@ -33,10 +33,12 @@ module.exports = {
     'react/no-access-state-in-setstate': 0,
     'react/function-component-definition': 0,
     'react/require-default-props': 0,
+    'react/jsx-no-useless-fragment': 0,
     'react/button-has-type': 0,
     'jsx-a11y/control-has-associated-label': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-quotes': 0,
     'no-alert': 0,
+    'no-nested-ternary': 0,
   },
 };

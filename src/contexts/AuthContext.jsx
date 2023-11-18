@@ -2,6 +2,7 @@ import React, {
   createContext, useContext, useState, useEffect, useMemo,
 } from 'react'
 import { getUserLogged } from '../utils/network-data'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const AuthContext = createContext()
 
@@ -24,14 +25,20 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { error } = await getUserLogged()
+      setLoading(true)
+      try {
+        const { error } = await getUserLogged()
 
-      if (error) {
-        logout()
-      } else {
-        login()
+        if (error) {
+          logout()
+        } else {
+          login()
+        }
+      } catch (error) {
+        alert('Error checking Authentication:', error)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     checkAuth()
@@ -48,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={contextValue}>
-      {!isLoading && children}
+      {isLoading ? <LoadingSpinner /> : !isLoading && children}
     </AuthContext.Provider>
   )
 }

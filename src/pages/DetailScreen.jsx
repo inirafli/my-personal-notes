@@ -7,19 +7,27 @@ import {
 import DetailContent from '../components/DetailContent'
 import ActionButton from '../components/ActionButton'
 import BaseLayout from '../components/BaseLayout'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const DetailScreen = () => {
   const { id } = useParams()
   const [note, setNote] = useState(null)
+  const [isLoading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchNote = async () => {
-      const noteResponse = await getNote(id)
-      if (!noteResponse.error) {
-        setNote(noteResponse.data)
-      } else {
-        navigate('/not-found')
+      try {
+        const noteResponse = await getNote(id)
+        if (!noteResponse.error) {
+          setNote(noteResponse.data)
+        } else {
+          navigate('/not-found')
+        }
+      } catch (error) {
+        alert('Error fetching Note: ', error)
+      } finally {
+        setLoading(false)
       }
     }
 
@@ -49,15 +57,19 @@ const DetailScreen = () => {
   return (
     <BaseLayout>
       <main>
-        <section className="detail-page">
-          <DetailContent note={note} />
-          <ActionButton
-            handleDelete={handleDelete}
-            handleArchive={handleArchive}
-            handleUnarchive={handleUnarchive}
-            archived={note && note.archived}
-          />
-        </section>
+        {isLoading ? (
+          <LoadingSpinner /> // Display loading spinner while fetching data
+        ) : (
+          <section className="detail-page">
+            <DetailContent note={note} />
+            <ActionButton
+              handleDelete={handleDelete}
+              handleArchive={handleArchive}
+              handleUnarchive={handleUnarchive}
+              archived={note && note.archived}
+            />
+          </section>
+        )}
       </main>
     </BaseLayout>
   )
