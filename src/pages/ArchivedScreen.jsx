@@ -1,13 +1,12 @@
 import React from 'react'
 
-import AppBar from '../components/AppBar'
 import ArchivedContent from '../components/ArchivedContent'
+import BaseLayout from '../components/BaseLayout'
 
 const ArchivedScreen = () => (
-  <div className="app-container">
-    <AppBar />
+  <BaseLayout>
     <ArchivedContent />
-  </div>
+  </BaseLayout>
 )
 
 export default ArchivedScreen

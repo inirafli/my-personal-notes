@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getArchivedNotes } from '../utils/local-data'
+import { getArchivedNotes } from '../utils/network-data'
 
 import SearchBar from './SearchBar'
 import NoteList from './NoteList'
+import useTextByLanguage from '../utils/language-helper'
 
 const ArchivedContent = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -29,7 +30,7 @@ const ArchivedContent = () => {
   return (
     <main>
       <section className="archives-page">
-        <h2>Catatan Arsip</h2>
+        <h2>{useTextByLanguage('Catatan Arsip', 'Archived Notes')}</h2>
         <section className="search-bar">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </section>

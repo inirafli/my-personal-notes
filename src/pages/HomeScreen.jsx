@@ -1,13 +1,12 @@
 import React from 'react'
 
-import AppBar from '../components/AppBar'
 import HomeContent from '../components/HomeContent'
+import BaseLayout from '../components/BaseLayout'
 
 const HomeScreen = () => (
-  <div className="app-container">
-    <AppBar />
+  <BaseLayout>
     <HomeContent />
-  </div>
+  </BaseLayout>
 )
 
 export default HomeScreen

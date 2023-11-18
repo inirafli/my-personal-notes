@@ -1,27 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
-  getNote, deleteNote, archiveNote, unarchiveNote,
-} from '../utils/local-data'
+  getNote, archiveNote, unarchiveNote, deleteNote,
+} from '../utils/network-data'
 
-import AppBar from '../components/AppBar'
 import DetailContent from '../components/DetailContent'
 import ActionButton from '../components/ActionButton'
+import BaseLayout from '../components/BaseLayout'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const DetailScreen = () => {
   const { id } = useParams()
-  const note = getNote(id)
-
+  const [note, setNote] = useState(null)
+  const [isLoading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!note) {
-      navigate('/not-found')
+    const fetchNote = async () => {
+      try {
+        const noteResponse = await getNote(id)
+        if (!noteResponse.error) {
+          setNote(noteResponse.data)
+        } else {
+          navigate('/not-found')
+        }
+      } catch (error) {
+        alert('Error fetching Note: ', error)
+      } finally {
+        setLoading(false)
+      }
     }
-  }, [note, navigate])
 
-  const handleDelete = () => {
-    deleteNote(id)
+    fetchNote()
+  }, [id, navigate])
+
+  const handleDelete = async () => {
+    await deleteNote(id)
 
     if (note && note.archived) {
       navigate('/archives')
@@ -30,31 +44,34 @@ const DetailScreen = () => {
     }
   }
 
-  const handleArchive = () => {
-    archiveNote(id)
+  const handleArchive = async () => {
+    await archiveNote(id)
     navigate('/')
   }
 
-  const handleUnarchive = () => {
-    unarchiveNote(id)
+  const handleUnarchive = async () => {
+    await unarchiveNote(id)
     navigate('/archives')
   }
 
   return (
-    <div className="app-container">
-      <AppBar />
+    <BaseLayout>
       <main>
-        <section className="detail-page">
-          <DetailContent note={note} />
-          <ActionButton
-            handleDelete={handleDelete}
-            handleArchive={handleArchive}
-            handleUnarchive={handleUnarchive}
-            archived={note && note.archived}
-          />
-        </section>
+        {isLoading ? (
+          <LoadingSpinner /> // Display loading spinner while fetching data
+        ) : (
+          <section className="detail-page">
+            <DetailContent note={note} />
+            <ActionButton
+              handleDelete={handleDelete}
+              handleArchive={handleArchive}
+              handleUnarchive={handleUnarchive}
+              archived={note && note.archived}
+            />
+          </section>
+        )}
       </main>
-    </div>
+    </BaseLayout>
   )
 }
 

@@ -1,17 +1,16 @@
 import React from 'react'
 
-import AppBar from '../components/AppBar'
+import BaseLayout from '../components/BaseLayout'
 
 const NotFoundScreen = () => (
-  <div className="app-container">
-    <AppBar />
+  <BaseLayout>
     <main>
       <section>
         <h2>404</h2>
         <p>Page not found</p>
       </section>
     </main>
-  </div>
+  </BaseLayout>
 )
 
 export default NotFoundScreen
