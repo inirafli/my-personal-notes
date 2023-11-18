@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import RegisterInput from '../components/RegisterInput'
 import { useAuth } from '../contexts/AuthContext'
 import BaseLayout from '../components/BaseLayout'
+import useTextByLanguage from '../utils/language-helper'
 
 const RegisterScreen = () => {
   const navigate = useNavigate()
@@ -19,12 +20,12 @@ const RegisterScreen = () => {
     <BaseLayout>
       <main>
         <section className='register-page'>
-          <h2>Isi form untuk mendaftar akun.</h2>
+          <h2>{useTextByLanguage('Isi form untuk mendaftar akun.', 'Fill the form to Register your Account')}</h2>
           <RegisterInput />
           <p>
-            Sudah punya akun?
+            {useTextByLanguage('Sudah punya akun?', 'Already have an Account?')}
             {' '}
-            <Link to="/login">Login di sini</Link>
+            <Link to="/login">{useTextByLanguage('Masuk di sini', 'Login here')}</Link>
           </p>
         </section>
       </main>

@@ -5,6 +5,7 @@ import { getActiveNotes } from '../utils/network-data'
 import SearchBar from './SearchBar'
 import NoteList from './NoteList'
 import AddButton from './AddButton'
+import useTextByLanguage from '../utils/language-helper'
 
 const HomeContent = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -36,7 +37,7 @@ const HomeContent = () => {
   return (
     <main>
       <section className="homepage">
-        <h2>Catatan Aktif</h2>
+        <h2>{useTextByLanguage('Catatan Aktif', 'Active Notes')}</h2>
         <section className="search-bar">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </section>

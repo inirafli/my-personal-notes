@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { register } from '../utils/network-data'
+import useTextByLanguage from '../utils/language-helper'
 
 const RegisterInput = () => {
   const [name, setName] = useState('')
@@ -23,7 +24,7 @@ const RegisterInput = () => {
 
   return (
     <div className="input-register">
-      <label htmlFor="name">Name</label>
+      <label htmlFor="name">{useTextByLanguage('Nama', 'Name')}</label>
       <input
         type="text"
         id="name"
@@ -44,7 +45,7 @@ const RegisterInput = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <label htmlFor="confirmPassword">Confirm Password</label>
+      <label htmlFor="confirmPassword">{useTextByLanguage('Pastikan Password', 'Confirm Password')}</label>
       <input
         type="password"
         id="confirmPassword"
@@ -52,7 +53,7 @@ const RegisterInput = () => {
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <button type="button" onClick={handleRegister}>
-        Register
+        {useTextByLanguage('Daftar', 'Register')}
       </button>
     </div>
   )

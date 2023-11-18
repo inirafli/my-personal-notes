@@ -1,9 +1,9 @@
 import React from 'react'
 import AppBar from './AppBar'
-import { useTheme } from '../contexts/ThemeContext'
+import { useApp } from '../contexts/AppContext'
 
 const BaseLayout = ({ children }) => {
-  const { theme } = useTheme()
+  const { theme } = useApp()
 
   return (
     <div className="app-container" data-theme={theme}>

@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login, putAccessToken } from '../utils/network-data'
 import { useAuth } from '../contexts/AuthContext'
+import useTextByLanguage from '../utils/language-helper'
 
 const LoginInput = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate()
+
   const { login: authLogin } = useAuth()
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     const { error, data } = await login({ email, password })
@@ -35,7 +37,7 @@ const LoginInput = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button type="button" onClick={handleLogin}>
-        Login
+        {useTextByLanguage('Masuk', 'Login')}
       </button>
     </div>
   )

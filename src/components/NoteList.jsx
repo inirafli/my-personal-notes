@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 
 import NoteItem from './NoteItem'
 import LoadingSpinner from './LoadingSpinner'
+import { useApp } from '../contexts/AppContext'
 
 const NoteList = ({ getNotes, searchTerm }) => {
   const [notes, setNotes] = useState([])
   const [isLoading, setLoading] = useState(true)
+  const { language } = useApp()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +40,7 @@ const NoteList = ({ getNotes, searchTerm }) => {
               <NoteItem key={note.id} note={note} />
             ))
           ) : (
-            <p className="notes-list__empty">Tidak ada catatan</p>
+            <p className="notes-list__empty">{language === 'id' ? 'Tidak ada catatan' : 'There are no Notes'}</p>
           )}
         </section>
       )}

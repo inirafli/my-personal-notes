@@ -12,10 +12,10 @@ import NotFoundScreen from '../pages/NotFoundScreen'
 import RegisterScreen from '../pages/RegisterScreen'
 import LoginScreen from '../pages/LoginScreen'
 import { AuthProvider } from '../contexts/AuthContext'
-import { ThemeProvider } from '../contexts/ThemeContext'
+import { AppProvider } from '../contexts/AppContext'
 
 const NotesApp = () => (
-  <ThemeProvider>
+  <AppProvider>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
@@ -31,7 +31,7 @@ const NotesApp = () => (
         </Routes>
       </BrowserRouter>
     </AuthProvider>
-  </ThemeProvider>
+  </AppProvider>
 )
 
 export default NotesApp
